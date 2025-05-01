@@ -1,0 +1,118 @@
+﻿@model WebAppVeterinaria.Models.Medico
+
+@{
+    ViewData["Title"] = "Medico";
+}
+
+<!-- Agregar el CSS de Materialize -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+
+<h1>Medico</h1>
+
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+        <form id="medicoForm">
+            <div class="input-field">
+                <input id="Cedula" type="text">
+                <label for="Cedula">Cédula</label>
+            </div>
+            <div class="input-field">
+                <input id="Nombre" type="text">
+                <label for="Nombre">Nombre</label>
+            </div>
+            <div class="input-field">
+                <input id="Apellido" type="text">
+                <label for="Apellido">Apellido</label>
+            </div>
+            <div class="input-field">
+                <input id="Direccion" type="text">
+                <label for="Direccion">Dirección</label>
+            </div>
+            <div class="input-field">
+                <input id="Telefono" type="text">
+                <label for="Telefono">Teléfono</label>
+            </div>
+            <div class="input-field">
+                <input id="Email" type="email">
+                <label for="Email">Email</label>
+            </div>
+            <div class="input-field">
+                <input id="FechaNacimiento" type="text" class="datepicker">
+                <label for="FechaNacimiento">Fecha de Nacimiento</label>
+            </div>
+            <div class="input-field">
+                <select id="Genero">
+                    <option value="" disabled selected>Seleccione</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+                <label>Género</label>
+            </div>
+            <button type="button" id="btnCrear" class="btn waves-effect waves-light">Crear</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de Materialize -->
+<div id="medicoModal" class="modal">
+    <div class="modal-content">
+        <h4>Información del Médico</h4>
+        <p><strong>Cédula:</strong> <span id="modalCedula"></span></p>
+        <p><strong>Nombre:</strong> <span id="modalNombre"></span></p>
+        <p><strong>Apellido:</strong> <span id="modalApellido"></span></p>
+        <p><strong>Dirección:</strong> <span id="modalDireccion"></span></p>
+        <p><strong>Teléfono:</strong> <span id="modalTelefono"></span></p>
+        <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+        <p><strong>Fecha de Nacimiento:</strong> <span id="modalFechaNacimiento"></span></p>
+        <p><strong>Género:</strong> <span id="modalGenero"></span></p>
+    </div>
+    <div class="modal-footer">
+        <button class="modal-close waves-effect waves-green btn-flat">Cerrar</button>
+    </div>
+</div>
+
+<!-- Agregar los scripts de Materialize -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var modalElement = document.getElementById("medicoModal");
+        var instance = M.Modal.init(modalElement); // Inicializa el modal
+
+        // Inicializa el select de Materialize
+        var selects = document.querySelectorAll("select");
+        M.FormSelect.init(selects);
+
+        // Inicializa el datepicker de Materialize
+        var datepickers = document.querySelectorAll(".datepicker");
+        M.Datepicker.init(datepickers, {
+            format: "yyyy-mm-dd",
+            i18n: { cancel: "Cancelar", done: "Aceptar" }
+        });
+
+        document.getElementById("btnCrear").addEventListener("click", function () {
+            let cedula = document.getElementById("Cedula").value;
+            let nombre = document.getElementById("Nombre").value;
+            let apellido = document.getElementById("Apellido").value;
+            let direccion = document.getElementById("Direccion").value;
+            let telefono = document.getElementById("Telefono").value;
+            let email = document.getElementById("Email").value;
+            let fechaNacimiento = document.getElementById("FechaNacimiento").value;
+            let genero = document.getElementById("Genero").value;
+
+            document.getElementById("modalCedula").textContent = cedula;
+            document.getElementById("modalNombre").textContent = nombre;
+            document.getElementById("modalApellido").textContent = apellido;
+            document.getElementById("modalDireccion").textContent = direccion;
+            document.getElementById("modalTelefono").textContent = telefono;
+            document.getElementById("modalEmail").textContent = email;
+            document.getElementById("modalFechaNacimiento").textContent = fechaNacimiento;
+            document.getElementById("modalGenero").textContent = genero;
+
+            instance.open(); // Abre el modal
+        });
+    });
+</script>
+
+
+

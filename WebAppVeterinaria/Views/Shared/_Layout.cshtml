@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>Veterinaria - Victor</title>
+	<link rel="stylesheet" type="text/css" href="~/materialize/css/materialize.css" />
+	<link rel="stylesheet" type="text/css" href="~/css/theme_style.css" />
+	<script type="text/javascript" src="~/js/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="~/materialize/js/materialize.js"></script>
+</head>
+<body>
+	<header class="row">
+		<div class="col s12 l4">
+			<img src="~/imagenes/pet.png" width="250" height="150" />
+		</div>
+		<div class="col s12 l4">
+			<div class="row loginField">
+				<div class="col s12 input-field">
+					<label for="txtUsuario">Usuario</label>
+					<input type="text" id="txtUsuario" name="txtUsuario" />
+				</div>
+			</div>
+			<div class="row loginField">
+				<div class="col s12 input-field">
+					<label>Password</label>
+					<input type="password" id="txtPassword" name="txtPassword" />
+				</div>
+			</div>
+		</div>
+		<div class="col s12 l4 valign">
+			<button type="button" id="btnIngresar" name="btnIngresar">Ingresar</button>
+		</div>
+	</header>
+	<div class="row content">
+		<section class="menu col s12 l3">
+			<ul>
+				<li><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></li>
+				<li><a asp-area="" asp-controller="Home" asp-action="Veterinaria">Veterinaria</a></li>
+				<li><a asp-area="" asp-controller="Home" asp-action="Medico">Medicos</a></li>
+				<li><a href="html/citas.html">Citas</a></li>
+				<li><a href="html/medicamentos.html">Medicamentos</a></li>
+			</ul>
+		</section>
+		<section class="col s12 l9">
+			@RenderBody()
+		</section>
+	</div>
+	<footer class="row">
+		<div class="col s12 l12">
+			<p>
+				Estamos ubicados en Manizales, Caldas, Colombia.<br />
+				Universidad de Caldas. Tel: 8871500.<br />
+				<strong>Veterinaria - Victor - 2016</strong>
+			</p>
+		</div>
+	</footer>
+</body>
+</html>
+
